@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>Bolt Calculator</title>
+    <link href="static/design.css" rel="stylesheet" type="text/css" />
+  </head>
+
+  <body>
+    <h1>Bolt Calculator</h1>
+
+    <form action="/" method="POST">
+      <label>
+        <span>n (Threads Per Inch):</span>
+        <input type="text" name="n" />
+      </label>
+      <br />
+
+      <label>
+        <span>dbsc (Basic Diameter):</span>
+        <input type="text" name="dbsc" />
+      </label>
+      <br />
+
+      <label>
+        <span>D1max (Maximum Minor Diameter, Internal Thread):</span>
+        <input type="text" name="D1max" />
+      </label>
+      <br />
+
+      <label>
+        <span>d2min (Minimum Minor Diameter, Internal Thread):</span>
+        <input type="text" name="d2min" />
+      </label>
+      <br />
+
+      <label>
+        <span>Length of Enagement:</span>
+        <input type="text" name="loe" />
+      </label>
+      <br />
+
+      <button type="submit" value="submit">Calculate</button>
+    </form>
+
+    {% if n == 0 and tensile_area == 0 %}
+    <p>The Tensile Stress Area Does Not Exist As n = 0</p>
+    {% elif dbsc == 0 and tensile_area == 0 %}
+    <p>The Tensile Stress Area Does Not Exist As dbsc = 0</p>
+    {% elif n == 0 and tensile_area == 3.14159 %}
+    <p></p>
+    {% else %}
+    <p>The Tensile Stress Area is {{tensile_area}} in<sup>2</sup></p>
+    {% endif %} {% if n == 0 and external_shear == 0 %}
+    <p>The Minimum External Shear Area Does Not Exist As n = 0</p>
+    {% elif n == 0 and external_shear == 3.14159 %}
+    <p></p>
+    {% else %}
+    <p>The Minimum External Shear Area is {{external_shear}} in<sup>2</sup></p>
+    {% endif %}
+  </body>
+</html>

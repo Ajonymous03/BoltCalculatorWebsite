@@ -1,0 +1,37 @@
+body {
+  background-color: #a8a7a5;
+  margin: 20px;
+}
+
+input {
+  display: inline-block;
+  text-align: left;
+  width: 150px;
+}
+
+label {
+  display: inline-block;
+  text-align: left;
+  font-size: 18px;
+}
+
+label span {
+  display: inline-block;
+  text-align: right;
+  width: 400px;
+}
+
+form {
+  width: 600px;
+}
+
+h1 {
+  text-align: center;
+  font-size: 30px;
+}
+
+br {
+  display: block;
+  margin: 20px;
+  content: " ";
+}
