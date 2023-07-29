@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
   <head>
     <meta charset="UTF-8" />
     <title>Bolt Calculator</title>
@@ -10,53 +10,200 @@
     <h1>Bolt Calculator</h1>
 
     <form action="/" method="POST">
+      <div class="thread">
+        <label for="thread">Thread Type</label>
+        <select id="threadType" name="threadType" onchange="this.form.submit()">
+          <option
+            id="select"
+            value="none"
+            name="selected"
+            selected
+            disabled
+            hidden
+          >
+            Select a Thread Type:
+          </option>
+          <option id="1/4-20" value="1/4-20">1/4-20</option>
+          <option id="1/4-28" value="1/4-28">1/4-28</option>
+          <option id="1/2-13" value="1/2-13">1/2-13</option>
+          <option id="1/2-20" value="1/2-20">1/2-20</option>
+          <option id="3/4-10" value="3/4-10">3/4-10</option>
+          <option id="3/4-16" value="3/4-16">3/4-16</option>
+          <option id="1-8" value="1-8">1-8</option>
+          <option id="1-12" value="1-12">1-12</option>
+          <option id="none" value="none">None</option>
+        </select>
+      </div>
+      <script>
+        document.getElementById("threadType").onchange = function () {
+          localStorage.setItem(
+            "selectedItem",
+            document.getElementById("threadType").value
+          );
+        };
+
+        if (localStorage.getItem("selectedItem")) {
+          document.getElementById("threadType").options[
+            localStorage.getItem("selectedItem")
+          ].selected = true;
+        }
+      </script>
+
       <label>
         <span>n (Threads Per Inch):</span>
-        <input type="text" name="n" />
+        <input
+          type="text"
+          name="n"
+          value="{{'%g'%(n)}}"
+          onchange="this.form.submit()"
+        />
       </label>
       <br />
 
       <label>
-        <span>dbsc (Basic Diameter):</span>
-        <input type="text" name="dbsc" />
+        <span>d<sub>min</sub> (Minimum Basic Diameter):</span>
+        <input
+          type="text"
+          name="dmin"
+          value="{{'%g'%(dmin)}}"
+          onchange="this.form.submit()"
+        />
       </label>
       <br />
 
       <label>
-        <span>D1max (Maximum Minor Diameter, Internal Thread):</span>
-        <input type="text" name="D1max" />
+        <span>d<sub>bsc</sub> (Basic Diameter):</span>
+        <input
+          type="text"
+          name="dbsc"
+          value="{{'%g'%(dbsc)}}"
+          onchange="this.form.submit()"
+        />
       </label>
       <br />
 
       <label>
-        <span>d2min (Minimum Minor Diameter, Internal Thread):</span>
-        <input type="text" name="d2min" />
+        <span>d<sub>1,bsc</sub> (Basic Minor Diameter, External Thread): </span>
+        <input
+          type="text"
+          name="d1bsc"
+          value="{{'%g'%(d1bsc)}}"
+          onchange="this.form.submit()"
+        />
       </label>
       <br />
 
       <label>
-        <span>Length of Enagement:</span>
-        <input type="text" name="loe" />
+        <span
+          >d<sub>2,min</sub> (Minimum Pitch Diameter, External Thread):</span
+        >
+        <input
+          type="text"
+          name="d2min"
+          value="{{'%g'%(d2min)}}"
+          onchange="this.form.submit()"
+        />
       </label>
       <br />
 
-      <button type="submit" value="submit">Calculate</button>
+      <label>
+        <span>d<sub>2,bsc</sub> (Basic Pitch Diameter, External Thread):</span>
+        <input
+          type="text"
+          name="d2bsc"
+          value="{{'%g'%(d2bsc)}}"
+          onchange="this.form.submit()"
+        />
+      </label>
+      <br />
+
+      <label>
+        <span>D<sub>1,bsc</sub> (Basic Minor Diameter, Internal Thread):</span>
+        <input
+          type="text"
+          name="D1bsc"
+          value="{{'%g'%(D1bsc)}}"
+          onchange="this.form.submit()"
+        />
+      </label>
+      <br />
+
+      <label>
+        <span
+          >D<sub>1,max</sub> (Maximum Minor Diameter, Internal Thread):</span
+        >
+        <input
+          type="text"
+          name="D1max"
+          value="{{'%g'%(D1max)}}"
+          onchange="this.form.submit()"
+        />
+      </label>
+      <br />
+
+      <label>
+        <span
+          >D<sub>2,max</sub> (Maximum Pitch Diameter, Internal Thread):</span
+        >
+        <input
+          type="text"
+          name="D2max"
+          value="{{'%g'%(D2max)}}"
+          onchange="this.form.submit()"
+        />
+      </label>
+      <br />
+
+      <label>
+        <span> UTSs (Strength of Externally Threaded Part):</span>
+        <input
+          type="text"
+          name="UTSs"
+          value="{{'%g'%(UTSs)}}"
+          onchange="this.form.submit()"
+        />
+      </label>
+      <br />
+
+      <label>
+        <span> UTSn (Strength of Internally Threaded Part):</span>
+        <input
+          type="text"
+          name="UTSn"
+          value="{{'%g'%(UTSn)}}"
+          onchange="this.form.submit()"
+        />
+      </label>
+      <br />
+
+      <label>
+        <span>LE (Length of Engagement):</span>
+        <input
+          type="text"
+          name="LE"
+          value="{{'%g'%(LE)}}"
+          onchange="this.form.submit()"
+        />
+      </label>
+      <br />
     </form>
 
-    {% if n == 0 and tensile_area == 0 %}
-    <p>The Tensile Stress Area Does Not Exist As n = 0</p>
-    {% elif dbsc == 0 and tensile_area == 0 %}
-    <p>The Tensile Stress Area Does Not Exist As dbsc = 0</p>
-    {% elif n == 0 and tensile_area == 3.14159 %}
-    <p></p>
-    {% else %}
-    <p>The Tensile Stress Area is {{tensile_area}} in<sup>2</sup></p>
-    {% endif %} {% if n == 0 and external_shear == 0 %}
-    <p>The Minimum External Shear Area Does Not Exist As n = 0</p>
-    {% elif n == 0 and external_shear == 3.14159 %}
-    <p></p>
-    {% else %}
-    <p>The Minimum External Shear Area is {{external_shear}} in<sup>2</sup></p>
-    {% endif %}
+    <div class="output" style="position: absolute; top: 50px; left: 1325px">
+      {{tensile_area}}
+    </div>
+
+    <div class="output" style="position: absolute; top: 80px; left: 1325px">
+      {{external_shear}}
+    </div>
+
+    <div class="output" style="position: absolute; top: 110px; left: 1325px">
+      {{internal_shear}}
+    </div>
+
+    <div class="output" style="position: absolute; top: 140px; left: 1325px">
+      {{R_Ratio}}
+    </div>
+
+    <div class="plot">{{ plot|safe }}</div>
   </body>
 </html>

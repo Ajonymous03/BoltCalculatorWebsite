@@ -1,12 +1,14 @@
 body {
-  background-color: #a8a7a5;
+  background-color: #9c9c9c;
   margin: 20px;
+  text-align: center;
 }
 
 input {
   display: inline-block;
   text-align: left;
   width: 150px;
+  height: 30px;
 }
 
 label {
@@ -21,17 +23,34 @@ label span {
   width: 400px;
 }
 
-form {
-  width: 600px;
-}
-
 h1 {
-  text-align: center;
   font-size: 30px;
+  display: inline;
 }
 
 br {
   display: block;
-  margin: 20px;
   content: " ";
+  margin-bottom: 20px;
+}
+
+.output {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.plot {
+  position: absolute;
+  top: 170px;
+  left: 1300px;
+}
+
+.thread {
+  position: absolute;
+  top: 20px;
+  left: 600px;
+}
+
+form {
+  position: absolute;
 }
