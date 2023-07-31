@@ -13,15 +13,7 @@
       <div class="thread">
         <label for="thread">Thread Type</label>
         <select id="threadType" name="threadType">
-          <option
-            id="select"
-            value="none"
-            selected
-            disabled
-            hidden
-          >
-            Select a Thread Type:
-          </option>
+          <option id="custom" value="customSelection" selected>Custom</option>
           <option id="1/4-20" value="1/4-20">1/4-20</option>
           <option id="1/4-28" value="1/4-28">1/4-28</option>
           <option id="1/2-13" value="1/2-13">1/2-13</option>
@@ -30,15 +22,16 @@
           <option id="3/4-16" value="3/4-16">3/4-16</option>
           <option id="1-8" value="1-8">1-8</option>
           <option id="1-12" value="1-12">1-12</option>
-          <option id="none" value="none">None</option>
         </select>
       </div>
+
       <script>
         document.getElementById("threadType").onchange = function () {
           localStorage.setItem(
             "selectedItem",
             document.getElementById("threadType").value
           );
+          this.form.submit();
         };
 
         if (localStorage.getItem("selectedItem")) {

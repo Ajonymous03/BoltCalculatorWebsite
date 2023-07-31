@@ -24,8 +24,9 @@ label span {
 }
 
 h1 {
-  font-size: 30px;
+  font-size: 40px;
   display: inline;
+  position: relative;
 }
 
 br {
@@ -47,10 +48,14 @@ br {
 
 .thread {
   position: absolute;
-  top: 20px;
+  top: 0px;
   left: 600px;
 }
 
 form {
   position: absolute;
+}
+
+select {
+  width: 150px;
 }

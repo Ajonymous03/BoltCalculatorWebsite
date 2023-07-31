@@ -23,31 +23,46 @@ def calculations():
     UTSn = 0
     LE = 1
 
-    if request.method == 'POST' and selected == 'none':
-        n = float(request.form.get('n'))
+    if selected == 'customSelection':
 
-        dmin = float(request.form.get('dmin'))
+        if request.form.get('n') != None:
+            n = float(request.form.get('n'))
 
-        dbsc = float(request.form.get('dbsc'))
+        if request.form.get('dmin') != None:
+            dmin = float(request.form.get('dmin'))
 
-        d1bsc = float(request.form.get('d1bsc'))
+        if request.form.get('dbsc') != None:
+            dbsc = float(request.form.get('dbsc'))
 
-        d2min = float(request.form.get('d2min'))
+        if request.form.get('d1bsc') != None:
+            d1bsc = float(request.form.get('d1bsc'))
 
-        d2bsc = float(request.form.get('d2bsc'))
+        if request.form.get('d2min') != None:
+            d2min = float(request.form.get('d2min'))
 
-        D1bsc = float(request.form.get('D1bsc'))
+        if request.form.get('d2bsc') != None:
+            d2bsc = float(request.form.get('d2bsc'))
 
-        D1max = float(request.form.get('D1max'))
+        if request.form.get('D1bsc') != None:
+            D1bsc = float(request.form.get('D1bsc'))
 
-        D2max = float(request.form.get('D2max'))
+        if request.form.get('D1max') != None:
+            D1max = float(request.form.get('D1max'))
 
-        UTSs = float(request.form.get('UTSs'))
+        if request.form.get('D2max') != None:
+            D2max = float(request.form.get('D2max'))
 
-        UTSn = float(request.form.get('UTSn'))
+        if request.form.get('UTSs') != None:
+            UTSs = float(request.form.get('UTSs'))
 
-        LE = float(request.form.get('LE'))
-    else:
+        if request.form.get('UTSn') != None:
+            UTSn = float(request.form.get('UTSn'))
+
+        if request.form.get('LE') != None:
+            LE = float(request.form.get('LE'))
+
+    elif selected != 'customSelection' and request.method == 'POST':
+
         n = ASME_B11_UN_2A2B_dict[selected]['n']
 
         dmin = ASME_B11_UN_2A2B_dict[selected]['dmin']
